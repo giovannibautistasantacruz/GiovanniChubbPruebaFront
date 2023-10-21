@@ -1,22 +1,22 @@
-import { Index } from './../../models/basic/index.interface';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PersonaFormGroup } from '../../models/formGroup/personaFormGroup.interface';
-import { Estado } from '../../models/basic/estado.interface';
 import { UtilitiesService } from '../../services/utilities.service';
 import { Subscription } from 'rxjs';
 import { ManageStepService } from '../../services/manageStep.service';
 import { ModuleType } from '../../enum/module-type.enum';
-import { Items } from '../../models/basic/items.interface';
 import { Cancel } from '../../models/basic/cancel.interface';
 import { MessageType } from '../../enum/message-type.enum';
 import { ShowMessageService } from '../../services/show-message.service';
 import { ComunicationService } from '../../services/comunication.service';
 import { ActionType } from '../../enum/action-type.enum';
-import { Persona } from '../../models/basic/persona.interface';
 import { CatalogService } from '../../services/catalog.service';
 import { Catalogo } from '../../models/basic/catalogo.interface';
 import { CatalogType } from '../../enum/catalog-type.enum';
+import { Items } from '../../models/basic/items.interface';
+import { Persona } from 'src/app/autentication/usuarios/models/basic/persona.interface';
+import { PersonaService } from 'src/app/autentication/usuarios/services/persona.service';
+import { ResponseAPI } from '../../models/basic/responseapi.Interface';
 
 @Component({
   selector: 'app-datos-personales',
@@ -25,35 +25,23 @@ import { CatalogType } from '../../enum/catalog-type.enum';
 })
 export class DatosPersonalesComponent implements OnInit, OnDestroy{
 
-
+    loading:boolean = false;
   estados: Catalogo[] = [];
   day:Date = new Date();
   activeIndex: number;
   items:any[]=[];
   manageStepService$: Subscription;
-  datosPersona:Persona={};
   accion:ActionType = ActionType.sinaccion;
   dpc$: Subscription;
   ngOnInit(): void {
-    this.manageStepService$ = this.manageStepService.getActivesIndex().subscribe({
-      next: (index: Index[]) => {
-        this.activeIndex = index.filter(f=>f.modulo==ModuleType.usuario)[0].activeIndex;
-        console.log("activeIndex",this.activeIndex);
-      }
-    });
-    this.dpc$ = this.dpc.getDatosPersona().subscribe({
-      next: (persona: Persona) => {
-        this.datosPersona = persona;
-        console.log("Datos persona",this.datosPersona);
-      }
-    });
+
     this.dpc$ = this.dpc.getAccion().subscribe({
       next: (actionType: ActionType) => {
         this.accion = actionType;
         console.log("TipoAcción",this.accion);
         if(this.accion == ActionType.editar || this.accion == ActionType.anterior){
           console.log("acción editar/anterior",this.personaFG);
-          this.personaFG.setValue(this.datosPersona);
+          //this.personaFG.setValue(this.datosPersona);
         }
       }
       });
@@ -69,7 +57,8 @@ export class DatosPersonalesComponent implements OnInit, OnDestroy{
     private manageStepService: ManageStepService,
     private sm: ShowMessageService,
     private dpc: ComunicationService,
-    private catalogos: CatalogService) {
+    private catalogos: CatalogService,
+    private personaService: PersonaService) {
       this.manageStepService$ = this.manageStepService.getItems().subscribe({
       next: (dataItems: Items[]) => {
         this.items = dataItems.filter(f=>f.modulo==ModuleType.usuario)[0].items;
@@ -97,32 +86,7 @@ export class DatosPersonalesComponent implements OnInit, OnDestroy{
     }
   }
 
-  prev() {
-    this.activeIndex--;
-    let index: Index[] =[{ modulo : ModuleType.usuario,activeIndex : this.activeIndex}];
-    this.manageStepService.setActiveIndex(index);
-    this.dpc.setAccion(ActionType.anterior);
-  }
 
-  next() {
-    if(this.us.formularioValido(this.personaFG)){
-      this.activeIndex++;
-      let index: Index[] =[{ modulo : ModuleType.usuario,activeIndex : this.activeIndex}];
-      this.manageStepService.setActiveIndex(index);
-      let datosPersona = this.personaFG.value;
-      if(this.personaFG.get("isNacional").value)
-      {
-        datosPersona.isNacional = true;
-      }else{
-        datosPersona.isNacional = false;
-      }
-      this.dpc.setDatosPersona(datosPersona);
-      this.dpc.setAccion(ActionType.siguiente);
-    }else{
-       this.sm.showMessage("personDataMessages",MessageType.error,"¡Error!",'Por favor captura los datos marcados con "*" o verificalos');
-    }
-
-  }
   cancel(){
     let cancelar: Cancel[] =[{ modulo : ModuleType.usuario,cancel : true}];
     this.manageStepService.setcancel(cancelar);
@@ -130,24 +94,43 @@ export class DatosPersonalesComponent implements OnInit, OnDestroy{
   }
   public personaFG : PersonaFormGroup = this.fb.group({
     nombre: [,[Validators.required,Validators.minLength(3)]],
-    paterno: [,[Validators.required,Validators.minLength(3)]],
-    materno: [,[Validators.minLength(3)]],
-    fechaNacimiento: [,[Validators.required]],
+    apaterno: [,[Validators.required,Validators.minLength(3)]],
+    amaterno: [,[Validators.minLength(3)]],
     email: [,[Validators.required,Validators.minLength(3),Validators.email]],
-    telefonoCasa: [,[Validators.minLength(10),Validators.maxLength(10)]],
-    celular: [,[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
-    telefonoEmergencia: [,[Validators.required, Validators.minLength(10),Validators.maxLength(10)]],
-    sexo : [, [Validators.required]],
-    curp : [, [Validators.required]],
-    idLugarNacimiento : [, [Validators.required]],
-    lugarNacimiento: [],
-    isNacional: [,[Validators.required]]
+    telefono: [,[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
+     direccion: [,[Validators.required,Validators.minLength(3)]]
   }) as PersonaFormGroup;
 
   haveErrors(controlName:string):boolean{
      return (this.personaFG.get(controlName).errors != null)?true:false;
   }
 
+ guardar(){
 
+ this.loading = true;
+    if (this.us.formularioValido(this.personaFG)) {
+      let formularioPersona: Persona = this.personaFG.value;
+      this.personaService.CreatePersona(formularioPersona).
+        subscribe({
+          next: (res: ResponseAPI) => {
+
+            this.loading = false;
+            console.log("Usuario Guardado",res);
+            this.sm.showMessage("userDataMessages", MessageType.success, "¡Exito!", "La persona se guardo correctamente");
+            this.cancel();
+          },
+          error: (err) => {
+            //console.log("error en login",err.error);
+            this.loading=false
+            this.sm.showMessage("userDataMessages", MessageType.error, "¡Error!", "Ocurrio un error,Intentalo más tarde o contacta al administrador.");
+          }
+        });
+    }
+     else {
+      this.loading=false;
+       this.sm.showMessage("userDataMessages", MessageType.error, "¡Error!", 'Por favor captura los datos marcados con "*" o verificalos');
+     }
+
+}
 
 }

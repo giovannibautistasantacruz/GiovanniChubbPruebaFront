@@ -1,5 +1,6 @@
 import { AbstractControl, FormGroup } from "@angular/forms";
-import { Persona } from "../basic/persona.interface";
+import { Persona } from "src/app/autentication/usuarios/models/basic/persona.interface";
+
 
 export interface PersonaFormGroup extends FormGroup{
 
@@ -7,18 +8,11 @@ export interface PersonaFormGroup extends FormGroup{
 
   controls:{
     nombre : AbstractControl;
-    paterno : AbstractControl;
-    fechaNacimiento? : AbstractControl,
-    email? : AbstractControl,
-    celular? : AbstractControl,
-    telefonoEmergencia? : AbstractControl,
-    materno? : AbstractControl,
-    telefonoCasa? : AbstractControl,
-    sexo?: AbstractControl,
-    curp?: AbstractControl,
-    idLugarNacimiento: AbstractControl,
-    lugarNacimiento?: AbstractControl,
-    isNacional?: AbstractControl
+    apaterno : AbstractControl;
+    amaterno : AbstractControl;
+    email? : AbstractControl;
+    telefono? : AbstractControl;
+    direccion? : AbstractControl;
   };
 
 }

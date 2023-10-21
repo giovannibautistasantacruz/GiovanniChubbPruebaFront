@@ -115,7 +115,7 @@
 							class="btn btn-sm btn-success w-100"
 							(click)="inscribirUsuario()"
 						>
-							Inscribir
+							Nuevo
 						</button>
 					</div><!-- end btn-acciones -->
 
@@ -164,18 +164,19 @@
 
 <!-- Modal Eliminar -->
 <div class="modal-eliminar">
-	<p-dialog header="Baja de Usuario" [(visible)]="visibleModalEliminar" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" >
+	<p-dialog header="Baja de persona" [(visible)]="visibleModalEliminar" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" >
 		<div class="text-center">
-			<p class="mb-4">JOHNATAN HERNANDEZ LOPEZ</p>
-			<p class="mb-2"><b> Por favor seleccione el tipo de baja </b></p>
+			<p class="mb-4">¿Esta seguro que desea dar de baja?</p>
+
 
 			<div class="d-flex justify-content-center">
 				<button
 					class="btn-bajas btn-bajas__temporal me-4"
 					pButton
 					type="button"
+          (click)="eliminarPersona()"
 				>
-					<span>Baja Temporal</span>
+					<span>SI</span>
 					<span class="material-symbols-outlined ms-2 mw-400">person_remove</span>
 				</button>
 				<button
@@ -183,7 +184,7 @@
 					pButton
 					type="button"
 				>
-					<span>Baja Definitiva</span>
+					<span>NO</span>
 					<span class="material-symbols-outlined ms-2 mw-400">person_remove</span>
 				</button>
 			</div>

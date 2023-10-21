@@ -4,7 +4,6 @@ import { MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { ModuleType } from 'src/app/shared/enum/module-type.enum';
 import { Cancel } from 'src/app/shared/models/basic/cancel.interface';
-import { Index } from 'src/app/shared/models/basic/index.interface';
 import { ManageStepService } from 'src/app/shared/services/manageStep.service';
 
 @Component({
@@ -28,8 +27,8 @@ export class ProcesoUsuarioComponent implements OnInit, OnDestroy {
     ];
     let itemsData:Items[] = [{modulo: ModuleType.usuario,items:this.items}];
     this.manageStepService.setItems(itemsData);
-    let index: Index[] =[{ modulo : ModuleType.usuario,activeIndex : 0}];
-    this.manageStepService.setActiveIndex(index);
+
+
 
   }
   ngOnDestroy(): void {
@@ -39,12 +38,7 @@ export class ProcesoUsuarioComponent implements OnInit, OnDestroy {
   constructor(
     private manageStepService: ManageStepService
   ){
-     this.manageStepService$ = this.manageStepService.getActivesIndex().subscribe({
-      next: (index: Index[]) => {
-        this.activeIndex = index.filter(f=>f.modulo==ModuleType.usuario)[0].activeIndex;
-        console.log("activeIndex",this.activeIndex);
-      }
-    });
+
   }
 
 

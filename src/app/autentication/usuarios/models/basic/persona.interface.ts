@@ -1,7 +1,7 @@
 
 
 export interface Persona {
-   idPersona: number,
+   idPersona?: number,
     nombre: string,
     apaterno: string,
     amaterno: string,

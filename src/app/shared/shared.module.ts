@@ -1,4 +1,3 @@
-import { Persona } from './models/basic/persona.interface';
 
 //Librerias Angular
 import { CommonModule } from '@angular/common';
@@ -20,6 +19,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DialogModule } from 'primeng/dialog';
 import { TooltipModule } from 'primeng/tooltip';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 //Modulos/Componentes/etc. propios
 import { ShowMessageService } from './services/show-message.service';
 import { DatosPersonalesComponent } from './components/datos-personales/datos-personales.component';
@@ -57,7 +57,8 @@ import { InputSwitchModule } from 'primeng/inputswitch';
       RadioButtonModule,
       DialogModule,
       TooltipModule,
-      InputSwitchModule
+      InputSwitchModule,
+      InputTextareaModule
     ],
     exports:[
       //Propias

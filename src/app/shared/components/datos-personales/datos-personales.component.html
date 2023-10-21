@@ -1,4 +1,5 @@
-<p-toast position="top-center" key="personDataMessages"></p-toast>
+<div id="loading-spinner" *ngIf="loading"></div>
+<p-toast position="top-center" key="userDataMessages"></p-toast>
 <form
 	class="formulario-wrap"
 	[formGroup]="personaFG"
@@ -10,7 +11,7 @@
 				<input
 					pInputText
 					type="text"
-					formControlName="paterno"
+					formControlName="apaterno"
 					ngClass="haveErrors('paterno')?'ng-invalid ng-dirty':'"
 				>
 				<span class="material-symbols-outlined">person</span>
@@ -22,7 +23,7 @@
 				<input
 					pInputText
 					type="text"
-					formControlName="materno"
+					formControlName="amaterno"
 					ngClass="haveErrors('materno')?'ng-invalid ng-dirty':'"
 				>
 				<span class="material-symbols-outlined">person</span>
@@ -58,10 +59,22 @@
 				<input
 					pInputText
 					type="text"
-					formControlName="celular"
+					formControlName="telefono"
 					ngClass="haveErrors('celular')?'ng-invalid ng-dirty':'"
 				>
 				<span class="material-symbols-outlined">phone_iphone</span>
+			</div>
+		</div>
+<div class="col-md-8 mt-3">
+			<div class="input-wrap">
+				<label for>Dirección*</label>
+        <textarea
+          pInputTextarea
+					formControlName="direccion"
+	        ngClass="haveErrors('direccion')?'ng-invalid ng-dirty':'">
+        </textarea>
+
+				<span class="material-symbols-outlined">person</span>
 			</div>
 		</div>
 
@@ -80,4 +93,13 @@
 				<span>Cancelar</span>
 				<span class="material-symbols-outlined ms-2">cancel</span>
 			</button>
-		</div>
+<button
+							type="button"
+							class="btn btn-sm btn-success btn-step"
+							(click)="guardar()"
+						>
+							Guardar
+						</button>
+</div>
+
+

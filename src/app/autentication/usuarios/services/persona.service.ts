@@ -10,7 +10,7 @@ const controller ='persona';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuariosService {
+export class PersonaService {
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +18,14 @@ export class UsuariosService {
   GetPersonas() {
     return this.http.get<Persona[]>(`${base_url}/${controller}/GetPersonas`);
   }
+
+CreatePersona(persona:Persona){
+ return this.http.post(`${base_url}/${controller}/CrearPersona`,persona);
+}
+
+DeletePersona(idPersona:number){
+return this.http.put(`${base_url}/${controller}/BajaPersona`,idPersona);
+
+}
 
 }

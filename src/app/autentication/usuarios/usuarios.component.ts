@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UsuariosService } from './services/persona.service';
+import {  PersonaService } from './services/persona.service';
 import { Persona } from './models/basic/persona.interface';
 import { Subscription } from 'rxjs';
 import { ManageStepService } from 'src/app/shared/services/manageStep.service';
@@ -7,6 +7,7 @@ import { Cancel } from 'src/app/shared/models/basic/cancel.interface';
 import { ModuleType } from 'src/app/shared/enum/module-type.enum';
 import { ComunicationService } from 'src/app/shared/services/comunication.service';
 import { ActionType } from 'src/app/shared/enum/action-type.enum';
+import { ResponseAPI } from 'src/app/shared/models/basic/responseapi.Interface';
 
 @Component({
   selector: 'app-usuarios',
@@ -45,7 +46,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
     this.manageStepService$.unsubscribe();
   }
   constructor(
-    private serviceUser: UsuariosService,
+    private serviceUser: PersonaService,
     private manageStepService: ManageStepService,
     private dpc: ComunicationService) {
     let cancel: Cancel[] = [{ modulo: ModuleType.usuario, cancel: false }];
@@ -87,5 +88,23 @@ console.log("getpersonas");
       this.visibleModalRolUsuario = true;
     }
   }
+
+eliminarPersona(){
+  this.loading=true;
+  this.serviceUser.DeletePersona(this.selectPersona.idPersona).
+        subscribe({
+          next: (res: ResponseAPI) => {
+
+            this.loading = false;
+
+
+          },
+          error: (err) => {
+            //console.log("error en login",err.error);
+            this.loading=false
+
+          }
+        });
+}
 
 }
