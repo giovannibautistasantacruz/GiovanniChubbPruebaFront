@@ -1,0 +1,83 @@
+<p-toast position="top-center" key="personDataMessages"></p-toast>
+<form
+	class="formulario-wrap"
+	[formGroup]="personaFG"
+>
+	<div class="row">
+		<div class="col-md-4 mt-3">
+			<div class="input-wrap">
+				<label for>Apellido Paterno*</label>
+				<input
+					pInputText
+					type="text"
+					formControlName="paterno"
+					ngClass="haveErrors('paterno')?'ng-invalid ng-dirty':'"
+				>
+				<span class="material-symbols-outlined">person</span>
+			</div>
+		</div>
+		<div class="col-md-4 mt-3">
+			<div class="input-wrap">
+				<label for>Apellido Materno</label>
+				<input
+					pInputText
+					type="text"
+					formControlName="materno"
+					ngClass="haveErrors('materno')?'ng-invalid ng-dirty':'"
+				>
+				<span class="material-symbols-outlined">person</span>
+			</div>
+		</div>
+		<div class="col-md-4 mt-3">
+			<div class="input-wrap">
+				<label for>Nombre*</label>
+				<input
+					pInputText
+					type="text"
+					formControlName="nombre"
+					ngClass="haveErrors('nombre')?'ng-invalid ng-dirty':'"
+				>
+				<span class="material-symbols-outlined">person</span>
+			</div>
+		</div>
+		<div class="col-md-4 mt-3">
+			<div class="input-wrap">
+				<label for>E-Mail*</label>
+				<input
+					pInputText
+					type="text"
+					formControlName="email"
+					ngClass="haveErrors('email')?'ng-invalid ng-dirty':'"
+				>
+				<span class="material-symbols-outlined">mail</span>
+			</div>
+		</div>
+		<div class="col-md-4 mt-3">
+			<div class="input-wrap">
+				<label for>Numero Celular*</label>
+				<input
+					pInputText
+					type="text"
+					formControlName="celular"
+					ngClass="haveErrors('celular')?'ng-invalid ng-dirty':'"
+				>
+				<span class="material-symbols-outlined">phone_iphone</span>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- end row -->
+</form>
+	<div class="d-flex mt-4">
+
+			<button
+				class="btn-step btn-step__cancelar"
+				pButton
+				type="button"
+        (click)="cancel()"
+			>
+				<span>Cancelar</span>
+				<span class="material-symbols-outlined ms-2">cancel</span>
+			</button>
+		</div>

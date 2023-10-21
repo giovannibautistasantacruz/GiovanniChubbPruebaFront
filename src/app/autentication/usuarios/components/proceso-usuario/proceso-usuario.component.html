@@ -1,0 +1,32 @@
+<div class="ficha">
+  <h1 class="fs-4 text">Captura Información</h1>
+  <br>
+  <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus laborum, ea, eligendi blanditiis cumque quasi dolorem quia incidunt pariatur adipisci velit sequi nulla totam! Dolores temporibus eligendi obcaecati, vitae excepturi provident sed tempora magnam neque ipsam, quisquam soluta esse natus! Nihil nobis doloremque eaque rem sint odit aperiam quos voluptatum.
+  </p>
+</div>
+<div class="ficha">
+  <div class="pasos mb-4">
+    <p-steps [model]="items" [readonly]="true" [(activeIndex)]="activeIndex"></p-steps>
+  </div>
+  <div class="ficha-inner">
+    <div class="header-card">
+      <span class="material-symbols-outlined">
+          group
+      </span>
+      <p class="ms-2"><b>Nuevo Registro</b></p>
+    </div>
+
+    <div class="p-3">
+      <div [ngSwitch]="activeIndex">
+        <ng-container *ngSwitchCase="0">
+          <app-datos-personales></app-datos-personales>
+        </ng-container>
+
+      </div>
+      <hr>
+
+    </div>
+  </div>
+</div>
+

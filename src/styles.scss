@@ -1,0 +1,570 @@
+/* You can add global styles to this file, and also import other style files */
+/* 
+  ESTILOS GENERALES RESET
+*/
+@import 'material-symbols';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6, p, a, label { margin: 0; padding: 0; }
+a { cursor: pointer; text-decoration: none; color: black; }
+a:hover { color: black; text-decoration: none; }
+ul, ol { list-style: none; padding: 0; margin-bottom: 0; }
+img { width: 100%; }
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+}
+body {
+  height: 100%;
+  background: #F0F3F5;
+  width: 100%;
+  overflow-x: hidden;
+}
+/* END ESTILOS GENERALES RESET */
+
+/* 
+  GENERALES
+*/
+.material-symbols-outlined {
+  font-variation-settings:'FILL' 0,'wght' 100,'GRAD' 0,'opsz' 24
+}
+.mw-400 {
+  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
+  font-size: 19px!important;
+}
+.mw-700 {
+  font-variation-settings:'FILL' 0,'wght' 700,'GRAD' 0,'opsz' 24
+}
+.mf-100 {
+  font-variation-settings:'FILL' 1,'wght' 100,'GRAD' 0,'opsz' 24
+}
+.mf-300 {
+  font-variation-settings:'FILL' 1,'wght' 300,'GRAD' 0,'opsz' 24
+}
+.breadcrum {
+  background: #F8F9FA;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+.ficha {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+  margin-bottom: 20px;
+}
+.ficha-inner {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+  height: 100%;
+}
+.header-card {
+  display: flex;
+  align-items: center;
+  color: #084298;
+  background-color: #cfe2ff;
+  border-color: #b6d4fe;
+  padding: 12px;
+  border-radius: 5px 5px 0 0;
+}
+/* END GENERALES */
+
+/* 
+  MENU STYLES JS DINAMIC CLASSES 
+*/
+.main-content {
+  width: calc(100% - 250px);
+  height: 100%;
+  transition: all .2s;
+}
+
+/* END MENU STYLES JS DINAMIC CLASSES */
+
+
+/* 
+  BOOTSTRAP PILLS
+*/
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: #084298;
+}
+/* BOOTSTRAP PILLS */
+
+
+/*
+  BOTONES CANCELAR ENVIAR 
+*/
+.btn-form {
+  display: flex!important;
+  justify-content: center!important;
+  width: 100%!important;
+  border: none!important;
+  padding: 3px 40px!important;
+  border-radius: 5px!important;
+  transition: all ease-in .2s !important;
+}
+.btn-form:hover {
+  background: white!important;
+  color: gray!important;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(150,145,150,1) !important;
+  -moz-box-shadow: 0px 0px 5px 0px rgba(150,145,150,1)!important;
+  box-shadow: 0px 0px 5px 0px rgba(150,145,150,1)!important;
+}
+.btn-form__enviar {
+  background-color: #084298!important;
+  color: white!important;
+}
+.btn-form__cancelar {
+  background-color: gray!important;
+  color: white!important;
+}
+.btn-bajas {
+  display: flex!important;
+  justify-content: center!important;
+  width: fit-content!important;
+  border: none!important;
+  padding: 10px 20px!important;
+  border-radius: 5px!important;
+  transition: all ease-in .2s !important;
+}
+.btn-bajas__temporal {
+  background-color: #ffca2c!important;
+  color: #2e2e2e!important;
+}
+.btn-bajas__definitiva {
+  background-color: #dc3545!important;
+  color: white!important;
+}
+/* END BOTONES CANCELAR ENVIAR */
+
+/* 
+  INFO BANNER
+*/
+.info-banner-2 {
+  padding: 5px;
+  text-align: center;
+  border: solid 1px #cfe2ff;
+  border-radius: 6px;
+  color: #084298;
+  font-weight: 900;
+  background: rgba(207, 226, 255, .2);
+  box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+}
+.info-banner {
+  background: #e2e3e5;
+  color: #41464b;
+  padding: 5px 12px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+/* END INFO BANNER */
+
+
+/* 
+  CARRITO CONCEPTO PAGO
+*/
+.productos {
+  box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+  border-radius: 0 5px 5px 0;
+  border-left: solid 4px #223C7F;
+}
+/* END CARRITO CONCEPTO PAGO */
+
+/* 
+  TABLAS GENERALES
+*/
+table .material-symbols-outlined {
+  background-color: #f5c2c7;
+  color: #842029;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 5px;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+table .editar {
+  background-color: #ffc107; /* #b6d4fe */
+  color: #084298;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 5px;
+  font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24
+}
+table .eliminar {
+  background-color: #f5c2c7;
+  color: #842029;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 5px;
+  font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24
+}
+#lista-tabla tbody tr {
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+}
+#lista-tabla tbody tr:nth-child(even) td:first-child {
+  border-left: solid 4px #1BC5BD;
+}
+#lista-tabla tbody tr:nth-child(odd) td:first-child {
+  border-left: solid 4px #223C7F;
+}
+#lista-tabla tbody td {
+  vertical-align: middle;
+  padding: 8px 10px;
+  border: none;
+}
+// ESTILOS PRIMENG TABLE
+.p-datatable .p-datatable-thead > tr > th {
+  background: none !important;
+  border: none !important;
+}
+#lista-tabla .p-datatable-table {
+  border-collapse: separate;
+  border-spacing: 0px 10px;
+  padding: 0 3px;
+}
+tr.p-element.p-selectable-row.p-highlight:focus {
+  outline: none;
+  outline-offset: 0;
+}
+/* END TABLAS GENERALES */
+
+
+/*
+  FORMULARIOS
+*/
+.formulario-wrap .input-wrap {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+// inputs
+.formulario-wrap .p-inputtext { // estos estilos don de form-control de bootstrap aplicado a primeng
+  display: block;
+  width: 100%;
+  padding: 6px 6px 6px 34px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 5px;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.formulario-wrap label {
+  color: #2e2e2e;
+  opacity: .5;
+  font-size: 14px;
+  font-weight: bold;
+}
+.formulario-wrap .input-wrap span {
+  position: absolute;
+  width: 28px;
+  bottom: 7px;
+  left: 4px;
+  color: #1BC5BD;
+  font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24
+}
+// text area
+.formulario-wrap .text-area textarea {
+  padding-left: 28px;
+}
+.formulario-wrap .text-area span {
+  top: 32px;
+}
+
+// dropdown = select
+.formulario-wrap .p-dropdown {
+  width: 100%;
+}
+.formulario-wrap .p-dropdown span {
+  position: initial;
+}
+// radio buttons sexo
+.formulario-wrap .p-radiobutton .p-radiobutton-box {
+  width: 20px;
+  height: 19px;
+}
+.formulario-wrap .radio-input .man {
+  bottom: -3px;
+  left: 11px;
+  color: cornflowerblue;
+  font-size: 32px;
+}
+.formulario-wrap .radio-input .woman {
+  bottom: -3px;
+  left: 11px;
+  color: hotpink;
+  font-size: 32px;
+}
+// calendario
+.formulario-wrap .p-calendar {
+  width: 100%;
+}
+.formulario-wrap .input-wrap-calendar {
+  position: relative;
+}
+.formulario-wrap .input-wrap-calendar i {
+  position: absolute;
+  width: 28px;
+  bottom: 7px;
+  left: 4px;
+  color: #1BC5BD;
+  font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24
+}
+
+.formulario-wrap .p-inputswitch .p-inputswitch-slider:before {
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  left: 5px;
+}
+.formulario-wrap .p-inputswitch {
+  width: 33px;
+  height: 16px;
+}
+
+.formulario-wrap .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
+  transform: translateX(14px);
+}
+/* END FORMULARIOS */
+
+
+/*
+  BOTONES STEPS FORMULARIOS
+*/
+// numeros pasos
+span.p-steps-number {
+  min-width: 5rem!important;
+  height: 2rem!important;
+  border-radius: 5px!important;
+}
+.btn-step {
+  width: fit-content !important;
+  background-color: #084298 !important;
+  color: white !important;
+  border: none !important;
+  padding: 3px 40px !important;
+}
+.btn-step:hover {
+  background: white !important;
+  color: #084298 !important;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(150,145,150,1) !important;
+  -moz-box-shadow: 0px 0px 5px 0px rgba(150,145,150,1) !important;
+  box-shadow: 0px 0px 5px 0px rgba(150,145,150,1) !important;
+}
+.p-button:disabled {
+  background-color: lightgray!important;
+}
+.p-button:disabled span {
+  color: #2e2e2e;
+}
+.btn-step:hover.p-button:disabled {
+  background-color: lightgray!important;
+  -webkit-box-shadow: none!important;
+  -moz-box-shadow: none!important;
+  box-shadow: none!important;
+}
+.btn-step:hover.p-button:disabled span {
+  color: #2e2e2e;
+}
+.btn-step__cancelar {
+  background-color: gray !important;
+  color: white !important;
+  margin-left: auto !important;
+}
+/* END BOTONES STEPS FORMULARIOS */
+
+/* 
+  LOADING SPINNER
+*/
+#loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.9);
+  transition: opacity .75s, visibility .75s;
+  z-index: 9999;
+  display: block;
+}
+#loading-spinner::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px; //centrar con absolute y top left
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 6px solid #dddddd;
+  border-color: #7449f5 transparent #7449f5 transparent;
+  animation: loading-spinner 0.75s ease infinite;
+}
+@keyframes loading-spinner {
+  from{
+      transform: rotate(0turn);
+  } to{
+      transform: rotate(1turn);
+  }
+}
+/* END LOADING SPINNER  */
+
+/* 
+  SEARCH BAR 
+*/
+.buscar-tabla {
+  position: relative;
+  width: 50%;
+  transition: all .5s;
+}
+.buscar-tabla input {
+  padding: 4px 4px 4px 34px !important;
+  background: rgba(20,20,20,.03);
+  border-radius: 5px;
+  width: 50%;
+}
+.buscar-tabla input:focus {
+  width: 100%;
+}
+.buscar-tabla span {
+  position: absolute;
+  bottom: 2px;
+  color: #1BC5BD;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  margin-left: 7px;
+  left: 0;
+}
+/* END SEACH BAR */
+
+/* 
+    informacion usuario/alumno col derecha ficha
+*/
+.datos-box{
+  white-space: nowrap;
+  word-break: break-word;
+  border-radius: 5px;
+  padding: 2px 10px;
+}
+.datos-box__info{
+  background: #F0F3F5;
+  width: 50%;
+  min-width: 143px;
+  max-width: 150px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+.datos-box__data{
+  text-align: center;
+  border: solid 1px #F0F3F5;
+  width: 100%;
+  min-width: 143px;
+  color: rgba(0,0,0,.5)!important;
+  font-size: 16px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+  text-overflow:ellipsis;
+  overflow:hidden; 
+}
+.datos-box__data:hover {
+  white-space: initial;
+  overflow:visible;
+}
+
+/* situacion alumno en plan de estudios */
+.situacion {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.situacion:hover {
+  background: #084298!important;
+}
+.situacion:hover .tipo-situacion {
+  color: white;
+}
+.situacion:hover span {
+  color: white;
+}
+/* 
+  end informacion usuario/alumno col derecha ficha
+*/
+
+
+/* 
+  BOTONES MODAL 
+*/
+
+// modales generales
+// para header position
+.p-dialog-header{
+  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+  position: relative; //se usa relative para que agarre el boxshadow
+  padding: 12px 25px!important;
+}
+.p-dialog-header .p-dialog-title {
+  font-weight: 500!important;
+  font-size: 1.2rem!important;
+}
+.p-dialog .p-dialog-content {
+  padding: 2rem 1.5rem 2rem 1.5rem !important;
+}
+
+.btn-modal button {
+  padding: 0;
+  background: 0;
+  border: 0;
+}
+.btn-modal span {
+  font-weight: 300;
+}
+.btn-modal .p-button:enabled:hover {
+  background: none!important;
+  color: white!important;
+  border: none!important;
+}
+.btn-modal .p-button:enabled:active {
+  background: none!important;
+  color: white!important;
+  border: none!important;
+}
+.btn-modal .p-button:focus {
+  outline: 0 none !important;
+  outline-offset: 0!important;
+  box-shadow: none!important;
+}
+
+
+
+/* END BOTONES MODAL */
+
+
+/* 
+  MEDIA QUERIS RESPONSIVE
+*/
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  // FOR MENU RESPONSIVE STYLES
+  .main-content {
+    margin-left: 250px;
+  }
+  /* .top-bar-wrap {
+    width: calc(100% - 250px)!important;
+    margin-left: 0;
+  } */
+}
+/* END MEDIA QUERIES */

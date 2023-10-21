@@ -1,0 +1,21 @@
+<app-sidebar></app-sidebar>
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="main_js">
+    <app-header></app-header><!-- top bar -->
+    <div class="breadcrum">
+        <span class="material-symbols-outlined me-2">
+            tab
+        </span>
+        <p>Home</p>
+        <span class="material-symbols-outlined">
+            navigate_next
+        </span>
+        <p id="breadcrum-url"></p>
+
+        <button type="button" class="btn btn-primary btn-sm ms-auto">Info</button>
+    </div>
+    <div class="carga-contenido p-3">
+      <router-outlet></router-outlet>
+    </div>
+</main>
+<!-- END MAIN CONTENT -->
